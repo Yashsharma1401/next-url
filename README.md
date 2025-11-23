@@ -35,4 +35,51 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 =======
-# URL_Shorter
+# URL_Shorter (TinyLink)
+
+This repository contains a small URL shortener built with Next.js and Prisma.
+
+**Quick dev**
+
+1. Copy `.env.example` to `.env` and update `DATABASE_URL`.
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Generate Prisma client (this also runs automatically after `npm install` via `postinstall`):
+
+```bash
+npm run prisma:generate
+```
+
+4. Run the dev server:
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+**Production / Deploy**
+
+- Ensure `DATABASE_URL` is set in your production environment.
+- Run database migrations on deploy (use `prisma migrate deploy` if using CI/CD):
+
+```bash
+npm run prisma:migrate:deploy
+```
+
+- Build and start:
+
+```bash
+npm run build
+npm run start
+```
+
+Notes:
+- The repository includes a `postinstall` script that runs `prisma generate` so the Prisma client is available after install.
+- Add `NEXT_PUBLIC_SITE_URL` in the environment if you need absolute URLs.
+
+If you plan to deploy to Vercel, follow the standard Next.js deployment flow and set the environment variables there.
